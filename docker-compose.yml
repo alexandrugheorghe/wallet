@@ -1,0 +1,24 @@
+services:
+  backend:
+    image: node:12.10.0
+    ports:
+    - 8080:8080
+    - 9229:9229 #Debugger port
+    container_name: node
+    volumes:
+    - ./backend:/opt/backend
+    env_file: backend.env
+    command: yarn start:dev
+  web:
+    image: node:12.10.0
+    container_name: react
+    ports:
+    - 3000:3000
+    volumes:
+    - ./web:/opt/web
+    command: yarn start
+  database:
+    container_name: mongodb
+    image: library/mongo:3.6.23
+    volumes:
+    - ./data/mongodb:/data/db
