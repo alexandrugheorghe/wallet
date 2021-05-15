@@ -13,10 +13,11 @@
     "@types/mongoose": "^5.10.5",
     "jest": "^26.6.3",
     "nodemon": "^2.0.7",
-    "ts-node": "^9.1.1"
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4"
   },
   "scripts": {
-    "start:dev": "nodemon -r ts-node/register --inspect=0.0.0.0:9229 server.ts",
+    "start:dev": "nodemon --spawn --exec 'node -r ts-node/register --inspect=0.0.0.0:9229 server.ts' --watch server",
     "start:prod": "ts-node server.ts"
   }
 }

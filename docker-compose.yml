@@ -2,12 +2,13 @@ services:
   backend:
     image: node:12.10.0
     ports:
-    - 8080:8080
+    - 8080:8080 #Port has to match env variable NODE_PORT
     - 9229:9229 #Debugger port
     container_name: node
     volumes:
     - ./backend:/opt/backend
     env_file: backend.env
+    working_dir: /opt/backend
     command: yarn start:dev
   web:
     image: node:12.10.0
@@ -16,6 +17,7 @@ services:
     - 3000:3000
     volumes:
     - ./web:/opt/web
+    working_dir: /opt/web
     command: yarn start
   database:
     container_name: mongodb
