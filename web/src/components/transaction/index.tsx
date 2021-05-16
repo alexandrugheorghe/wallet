@@ -5,7 +5,7 @@ import { Props } from './types'
 const Transaction: FC<Props> = props => {
 	return (
 	  <TransactionAmount>
-		{props.number}
+		{props.value}
 		<TransactionTotal>{props.total}</TransactionTotal>
 	  </TransactionAmount>
 	)

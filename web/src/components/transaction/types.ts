@@ -1,4 +1,4 @@
 export interface Props {
-  number: number
+  value: number
   total: number
 }
