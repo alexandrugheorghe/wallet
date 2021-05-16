@@ -17,7 +17,7 @@
     "typescript": "^4.2.4"
   },
   "scripts": {
-    "start:dev": "nodemon --spawn --exec 'node -r ts-node/register --inspect=0.0.0.0:9229 server.ts' --watch server",
+    "start:dev": "nodemon --spawn --exec 'node -r ts-node/register --inspect=0.0.0.0:9229 server.ts' --watch services repositories server.ts",
     "start:prod": "ts-node server.ts"
   }
 }
