@@ -10,6 +10,8 @@ services:
     env_file: backend.env
     working_dir: /opt/backend
     command: bash -c "yarn && yarn start:dev"
+    depends_on:
+      - database
   web:
     image: node:12.10.0
     container_name: react
@@ -19,6 +21,8 @@ services:
     - ./web:/opt/web
     working_dir: /opt/web
     command: bash -c "yarn && yarn start"
+    depends_on:
+      - backend
   database:
     container_name: mongodb
     image: library/mongo:3.6.23
