@@ -1,5 +1,5 @@
 ##### Requirements
-- `docker-compose` CLI
+- `docker-compose` CLI (https://www.docker.com/get-started)
 ##### Instructions
 1. `docker-compose up` spins up the node, react and mongodb containers. First execution might take 10 minutes to
  install all dependencies. Later executions will be faster.
