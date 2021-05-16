@@ -1,12 +1,11 @@
 import React, { FC } from 'react'
-import { TransactionAmount, TransactionTotal } from './styled-components'
+import { TransactionAmount } from './styled-components'
 import { Props } from './types'
 
 const Transaction: FC<Props> = props => {
 	return (
 	  <TransactionAmount>
 		{props.value}
-		<TransactionTotal>{props.total}</TransactionTotal>
 	  </TransactionAmount>
 	)
 }

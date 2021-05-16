@@ -5,10 +5,19 @@ import config from '../config'
 export function useFetchTransactionsAndTotal() {
   const [transactions, setTransactions] = useState<TransactionItem[]>([])
   const [total, setTotal] = useState<number>(0)
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<Error>()
-  useEffect(() => {
+
+  const fetchTransactionsAndTotal = async () => {
+    setIsLoading(true)
 	fetch(config.backendURL + `/api/transactions`, )
+	.then(async response => {
+	  if (response.status === 500) {
+		const text = await response.text()
+		throw new Error(text)
+	  }
+	  return response
+	})
 	.then(response => response.json())
 	.then(jsonResponse => {
 	  setTransactions(jsonResponse.transactions)
@@ -16,6 +25,16 @@ export function useFetchTransactionsAndTotal() {
 	})
 	.catch(error => setError(error))
 	.then(() => setIsLoading(false))
+  }
+  useEffect(() => {
+	fetchTransactionsAndTotal()
   }, [])
-  return { transactions, total, error, isLoading }
+  return {
+    transactions,
+	setTransactions,
+	total,
+	error,
+	isLoading,
+	fetchTransactionsAndTotal
+  }
 }

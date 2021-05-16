@@ -7,8 +7,3 @@ export const TransactionAmount = styled.div`
 	font-weight: ${values.text.weight};
 `
 
-export const TransactionTotal = styled.div`
-	display: inline-block;
-	color: ${values.colors.lightBlue};
-	
-`

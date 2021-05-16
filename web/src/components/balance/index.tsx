@@ -5,7 +5,7 @@ import { BalanceTotal } from './styled-components'
 const Balance: FC<Props> = props => {
   return (
 	<BalanceTotal>
-	  {props.balance}
+	  Total: {props.balance}
 	</BalanceTotal>
   )
 }

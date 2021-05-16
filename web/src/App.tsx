@@ -1,17 +1,18 @@
 import React from 'react'
-import './App.css'
+import { Col, Container, Row } from 'react-bootstrap'
 import TransactionList from './containers/transactionList'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Your wallet App :)
-        </p>
-        <TransactionList />
-      </header>
-    </div>
+    <Container>
+      <Row>
+        <Col/>
+        <Col>
+          <TransactionList />
+        </Col>
+        <Col/>
+      </Row>
+    </Container>
   )
 }
 
