@@ -34,7 +34,12 @@ const TransactionGatewayFactory = (): TransactionGateway => {
 		}
 	  ])
 	  .exec()
-	  .then(aggregation => aggregation[0].total)
+	  .then(aggregation => {
+	    if (!aggregation || aggregation.length === 0) {
+	      return 0
+		}
+	    return aggregation[0].total
+	  })
 	}
   }
 }
