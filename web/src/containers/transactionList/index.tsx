@@ -1,4 +1,4 @@
-import React, { FC, FormEvent, useEffect, useState } from 'react'
+import React, { FC, FormEvent, useState } from 'react'
 import { Spinner, Table, Alert } from 'react-bootstrap'
 import TransactionItem from '../../components/transactionItem'
 import Balance from '../../components/balance'
@@ -31,17 +31,13 @@ const TransactionList: FC<any> = () => {
 	    const newTransactions = [ ...transactions]
 		newTransactions.push({ value })
 	    setTransactions(newTransactions)
+		setTimeout(() => {
+		  setValue(0)
+		  fetchTransactionsAndTotal()
+		}, 100)
 	  })
 	}
   }
-  useEffect(() => {
-    const interval = setInterval(() => {
-      fetchTransactionsAndTotal()
-	}, 5000)
-	return () => {
-      clearInterval(interval)
-	}
-  }, [])
   if (isLoading) {
     return <Spinner animation={'grow'} />
   }
