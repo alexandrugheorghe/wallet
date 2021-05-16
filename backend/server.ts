@@ -43,6 +43,18 @@ app.post('/api/transactions', (request: Request, response: Response) => {
   })
 })
 
+app.get('/api/seedTransactions', (request: Request, response: Response) => {
+  return Promise.all([
+    transactionsService.createTransaction(Math.random() * 100),
+    transactionsService.createTransaction(Math.random() * 100),
+    transactionsService.createTransaction(Math.random() * 100)
+  ]).then(() => {
+    return response.sendStatus(200)
+  }).catch(error => {
+    return response.status(500).send(error.message)
+  })
+})
+
 app.listen(config.port, () => {
   console.log(`Server listening at localhost:${config.port}.`)
   return mongoose.connect(
