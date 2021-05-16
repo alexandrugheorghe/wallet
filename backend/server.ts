@@ -2,8 +2,8 @@ import { Request, Response, Express } from 'express'
 import * as express from 'express'
 import * as mongoose from 'mongoose'
 import config from './config'
-import TransactionsServiceFactory from './services/transactions/transactions'
-import TransactionGatewayFactory from './gateways/transactions'
+import TransactionsServiceFactory from './server/services/transactions/transactions'
+import TransactionGatewayFactory from './server/gateways/transactions'
 
 const app: Express = express()
 app.use(express.json())
