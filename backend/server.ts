@@ -1,4 +1,5 @@
 import { Request, Response, Express } from 'express'
+import * as cors from 'cors'
 import * as express from 'express'
 import * as mongoose from 'mongoose'
 import config from './config'
@@ -6,6 +7,7 @@ import TransactionsServiceFactory from './server/services/transactions/transacti
 import TransactionGatewayFactory from './server/gateways/transactions'
 
 const app: Express = express()
+app.use(cors())
 app.use(express.json())
 
 const transactionsService = TransactionsServiceFactory({

@@ -16,9 +16,10 @@ const TransactionsServiceFactory = (dependencies: Dependencies): TransactionServ
   const { transactionGateway } = dependencies
   return {
     createTransaction: async (value: number) => {
-      if (!value) {
+      if (!value || !Number.isFinite(value)) {
         throw new InvalidTransactionValueError(value)
 	  }
+
       const total = await transactionGateway.getTotal()
 	  if (total + value < 0) {
 		throw new InsufficientBalanceError(value)
